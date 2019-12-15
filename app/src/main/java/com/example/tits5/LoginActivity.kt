@@ -30,22 +30,50 @@ class LoginActivity : AppCompatActivity() {
         LoginToFirebase(etEmail.text.toString(),etPassword.text.toString())
     }
 
-    fun LoginToFirebase(email:String,password:String)
-    {
-        mAuth!!.createUserWithEmailAndPassword(email,password)
-            .addOnCompleteListener(this){ task ->
-                if (task.isSuccessful)
-                {
+    fun LoginToFirebase(email:String,password:String) {
+        mAuth!!.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
                     var currentUser = mAuth!!.currentUser
-                    Toast.makeText(applicationContext,"Successful Login",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Successful Login", Toast.LENGTH_SHORT)
+                        .show()
+
                     if (currentUser != null) {
-                        myRef.child("Users").child(splitString(currentUser.email.toString())).child("Request").setValue(currentUser.uid)
+
+                        myRef.child("Users")
+                            .child(splitString(currentUser.email.toString()))
+                            .child("Request").setValue(currentUser.uid)
                     }
+
+
                     LoadMain()
-                }
-                else
-                {
-                    Toast.makeText(applicationContext,"Login Failed. Check Email and Password Again!",Toast.LENGTH_SHORT).show()
+                } else {
+
+                    mAuth!!.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                var currentUser = mAuth!!.currentUser
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Successful Login",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                if (currentUser != null) {
+
+                                    myRef.child("Users")
+                                        .child(splitString(currentUser.email.toString()))
+                                        .child("Request").setValue(currentUser.uid)
+                                    mAuth!!.signInWithEmailAndPassword(email, password)
+                                }
+                                LoadMain()
+                            } else {
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Login Failed. Check Email and Password Again!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
                 }
 
             }
