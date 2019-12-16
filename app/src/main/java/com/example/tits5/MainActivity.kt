@@ -1,6 +1,7 @@
 package com.example.tits5
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 //import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -26,7 +27,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
+
+        intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
@@ -106,7 +110,7 @@ class MainActivity : AppCompatActivity() {
         val buSelected: Button = view as Button
         var cellId = 0
         when (buSelected.id) {
-            R.id.button1 -> cellId = 1
+            R.id.button1 -> cellId = 10
             R.id.button2 -> cellId = 2
             R.id.button3 -> cellId = 3
 
@@ -497,8 +501,12 @@ class MainActivity : AppCompatActivity() {
                                 Disablebutton()
                                 ActivePlayer = if (PlayerSymbol == "X") 2 else 1
                             }
-
-                            AutoPlayOnline(key.toInt())
+                            var keyint = key.toInt()
+                            if(keyint == 10)
+                            {
+                                keyint = 1
+                            }
+                            AutoPlayOnline(keyint)
                         }
                     }
                 }catch (ex:Exception)

@@ -92,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
             var intent = Intent(this, MainActivity::class.java)
             intent.putExtra("Email", currentUser.email)
             intent.putExtra("uid", currentUser.uid)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
 
             startActivity(intent)
         }
