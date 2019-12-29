@@ -1,6 +1,7 @@
 package com.example.tits5
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 //import android.support.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -21,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         mAuth = FirebaseAuth.getInstance()
+        intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
 
 
     }
@@ -92,8 +94,7 @@ class LoginActivity : AppCompatActivity() {
             var intent = Intent(this, MainActivity::class.java)
             intent.putExtra("Email", currentUser.email)
             intent.putExtra("uid", currentUser.uid)
-            intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
-
+           intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
         }
     }

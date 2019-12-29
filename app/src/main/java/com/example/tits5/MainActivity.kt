@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlin.collections.HashMap
 
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private var database = FirebaseDatabase.getInstance()
     private var myRef = database.reference
+    private var mAuth: FirebaseAuth? = null
 
     private var mFirebaseAnalytics: FirebaseAnalytics? = null
 
@@ -29,8 +31,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
+        mAuth = FirebaseAuth.getInstance()
 
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
+        val btn = findViewById(R.id.buLog) as Button
+        btn.setOnClickListener {
+            mAuth!!.signOut()
+            var intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+
+            startActivity(intent)
+        }
+
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
@@ -38,7 +50,13 @@ class MainActivity : AppCompatActivity() {
         var b: Bundle? = intent.extras
         myEmail = b?.getString("Email")
 
+
         IncommingCalls()
+
+
+
+
+
 
     }
 
