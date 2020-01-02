@@ -14,7 +14,7 @@
         android:layout_height="40dp"
         android:layout_margin="20sp"
         android:background="@drawable/rounded_buttons"
-        android:text="Return to Login"
+        android:text="Log out and return to Login"
         android:textAllCaps="false" />
 
     <LinearLayout
