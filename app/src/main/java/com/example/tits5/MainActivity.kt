@@ -563,9 +563,7 @@ class MainActivity : AppCompatActivity() {
                                 value = td[key] as String
                                 etEmail.setText(value)
 
-//                                    var notifyMe = Notifications()
-//                                    notifyMe.Notify(applicationContext,value + " wants to play Tic Tac Toe", number)
-//                                    number++
+
 
                                 myRef.child("Users").child(splitString(myEmail!!)).child("Request").setValue(true)
                                 break
