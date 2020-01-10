@@ -70,6 +70,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
+
+
     fun restartGame(view: View) {
         button1.setBackgroundResource(android.R.drawable.btn_default)
         button2.setBackgroundResource(android.R.drawable.btn_default)
@@ -123,6 +127,60 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun restartGame2() {
+        button1.setBackgroundResource(android.R.drawable.btn_default)
+        button2.setBackgroundResource(android.R.drawable.btn_default)
+        button3.setBackgroundResource(android.R.drawable.btn_default)
+        button4.setBackgroundResource(android.R.drawable.btn_default)
+        button5.setBackgroundResource(android.R.drawable.btn_default)
+        button6.setBackgroundResource(android.R.drawable.btn_default)
+        button7.setBackgroundResource(android.R.drawable.btn_default)
+        button8.setBackgroundResource(android.R.drawable.btn_default)
+        button9.setBackgroundResource(android.R.drawable.btn_default)
+
+        button1.text = ""
+        button2.text = ""
+        button3.text = ""
+        button4.text = ""
+        button5.text = ""
+        button6.text = ""
+        button7.text = ""
+        button8.text = ""
+        button9.text = ""
+
+        Player1.clear()
+        Player2.clear()
+        ActivePlayer = 1
+
+        button1.isEnabled = true
+        button2.isEnabled = true
+        button3.isEnabled = true
+        button4.isEnabled = true
+        button5.isEnabled = true
+        button6.isEnabled = true
+        button7.isEnabled = true
+        button8.isEnabled = true
+        button9.isEnabled = true
+
+        setPlayer = 1
+        PVP.setBackgroundColor(Color.CYAN)
+        PVC.setBackgroundColor(android.R.drawable.btn_default)
+
+        multi = 0
+        PVC.alpha = 0.9F
+        PVP.alpha = 0.9F
+        PVC.isEnabled = true
+        PVP.isEnabled = true
+
+        if (checksend == 1)
+        {
+            etEmail.setText("")
+        }
+        checksend = 0
+
+    }
+
+
 
     fun buttonClick(view: View) {
         val buSelected: Button = view as Button
@@ -161,11 +219,13 @@ class MainActivity : AppCompatActivity() {
                 setPlayer = 1
                 ps.setBackgroundColor(Color.CYAN)
                 PVC.setBackgroundColor(android.R.drawable.btn_default)
+                restartGame2()
             }
             R.id.PVC -> {
                 setPlayer = 2
                 ps.setBackgroundColor(Color.CYAN)
                 PVP.setBackgroundColor(android.R.drawable.btn_default)
+                restartGame2()
             }
         }
     }
@@ -470,6 +530,8 @@ class MainActivity : AppCompatActivity() {
         PVC.isEnabled = false
         PVP.isEnabled = false
         PlayerOnline(splitString(myEmail!!) + splitString(userEmail))
+        restartGame2()
+
 
     }
 
@@ -484,6 +546,7 @@ class MainActivity : AppCompatActivity() {
         PVP.isEnabled = false
         checksend = 1
         PlayerOnline(splitString(userEmail) + splitString(myEmail!!))
+        restartGame2()
 
     }
 
