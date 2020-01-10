@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     var currentUser = mAuth!!.currentUser
-                    Toast.makeText(applicationContext, "Successful Login", Toast.LENGTH_SHORT)
+                    Toast.makeText(applicationContext, "Zalogowano pomyślnie", Toast.LENGTH_SHORT)
                         .show()
 
                     if (currentUser != null) {
@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
                                 var currentUser = mAuth!!.currentUser
                                 Toast.makeText(
                                     applicationContext,
-                                    "Successful Login",
+                                    "Zalogowano pomyślnie",
                                     Toast.LENGTH_SHORT
                                 ).show()
                                 if (currentUser != null) {
@@ -71,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
                             } else {
                                 Toast.makeText(
                                     applicationContext,
-                                    "Login Failed. Check Email and Password Again!",
+                                    "Nie można zalogować! Sprawdź dane!",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }

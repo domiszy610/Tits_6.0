@@ -22,24 +22,24 @@
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_gravity="center_horizontal"
         android:layout_width="350dp"
         android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
         android:layout_marginTop="40dp"
-        android:hint="Password:"
         android:background="#ffffff"
+        android:hint="Hasło:"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btLogin"
+        android:layout_width="350dp"
+        android:layout_height="45dp"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
         android:layout_marginTop="40dp"
-        android:layout_width="350dp"
         android:background="@drawable/rounded_buttons"
-        android:layout_height="45dp"
         android:onClick="buLoginEvent"
-        android:text="Login"/>
+        android:text="Zaloguj się" />
 
 </LinearLayout>

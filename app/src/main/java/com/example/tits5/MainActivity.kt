@@ -186,7 +186,7 @@ class MainActivity : AppCompatActivity() {
                     try {
                         AutoPlay()
                     } catch (ex: Exception) {
-                        Toast.makeText(this, "Game Over", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "KONIEC GRY", Toast.LENGTH_SHORT).show()
                     }
 
                 }
@@ -293,11 +293,11 @@ class MainActivity : AppCompatActivity() {
 
         if (winner != -1) {
             if (winner == 1) {
-                Toast.makeText(this, "X Wins!!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "X WYGRYWA!!!", Toast.LENGTH_SHORT).show()
                 stopTouch()
 
             } else {
-                Toast.makeText(this, "O Wins!!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "O WYGRYWA!!!", Toast.LENGTH_SHORT).show()
                 stopTouch()
 
             }
@@ -375,18 +375,18 @@ class MainActivity : AppCompatActivity() {
         if (winner != -1) {
             if (winner == 1) {
                 if (setPlayer == 1) {
-                    Toast.makeText(this, "Player 1 Wins!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Gracz 1 wygrywa!", Toast.LENGTH_SHORT).show()
                     stopTouch()
                 } else {
-                    Toast.makeText(this, "You Won!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Wygrałeś!!!", Toast.LENGTH_SHORT).show()
                     stopTouch()
                 }
             } else {
                 if (setPlayer == 1) {
-                    Toast.makeText(this, "Player 2 Wins!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Gracz 2 wygrywa!", Toast.LENGTH_SHORT).show()
                     stopTouch()
                 } else {
-                    Toast.makeText(this, "CPU Wins!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Komputer wygrał!!!", Toast.LENGTH_SHORT).show()
                     stopTouch()
                 }
             }

@@ -14,7 +14,7 @@
         android:layout_height="40dp"
         android:layout_margin="20sp"
         android:background="@drawable/rounded_buttons"
-        android:text="Log out and return to Login"
+        android:text="Powrót do ekranu logowania"
         android:textAllCaps="false" />
 
     <LinearLayout
@@ -24,14 +24,14 @@
         android:orientation="horizontal">
 
         <EditText
-            android:inputType="textPersonName"
             android:id="@+id/etEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#ffffff"
             android:layout_weight="1"
+            android:background="#ffffff"
             android:ems="8"
-            android:hint="Other Player Email :" />
+            android:hint="Email przeciwnika:"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/buRequest"
@@ -41,7 +41,7 @@
             android:layout_weight="1"
             android:background="@drawable/rounded_buttons"
             android:onClick="buRequestEvent"
-            android:text="Request"
+            android:text="Zaproś"
             android:textAllCaps="false" />
 
         <Button
@@ -50,9 +50,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="2sp"
             android:layout_weight="1"
-            android:onClick="buAcceptEvent"
             android:background="@drawable/rounded_buttons"
-            android:text="Accept"
+            android:onClick="buAcceptEvent"
+            android:text="Akceptuj"
             android:textAllCaps="false" />
 
     </LinearLayout>
@@ -74,7 +74,7 @@
                 android:alpha="0.9"
                 android:backgroundTint="#E91E63"
                 android:onClick="PlayerChoose"
-                android:text="Player v/s Player"
+                android:text="Gracz vs Gracz"
                 android:textAllCaps="false" />
 
             <Button
@@ -84,7 +84,7 @@
                 android:layout_margin="7sp"
                 android:alpha="0.9"
                 android:onClick="PlayerChoose"
-                android:text="Player v/s CPU"
+                android:text="Gracz vs Komputer"
                 android:textAllCaps="false" />
         </TableRow>
 
@@ -198,9 +198,9 @@
                 android:id="@+id/bRestart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="restartGame"
-                android:text="Restart"
                 android:background="@drawable/rounded_buttons"
+                android:onClick="restartGame"
+                android:text="Wyczyść"
                 android:textAlignment="center"
                 android:textSize="18sp"
                 tools:ignore="ButtonStyle" />
