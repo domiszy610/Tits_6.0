@@ -162,20 +162,12 @@ class MainActivity : AppCompatActivity() {
         button8.isEnabled = true
         button9.isEnabled = true
 
-        setPlayer = 1
-        PVP.setBackgroundColor(Color.CYAN)
-        PVC.setBackgroundColor(android.R.drawable.btn_default)
 
-        multi = 0
-        PVC.alpha = 0.9F
-        PVP.alpha = 0.9F
+
         PVC.isEnabled = true
         PVP.isEnabled = true
 
-        if (checksend == 1)
-        {
-            etEmail.setText("")
-        }
+
         checksend = 0
 
     }
@@ -226,6 +218,7 @@ class MainActivity : AppCompatActivity() {
                 ps.setBackgroundColor(Color.CYAN)
                 PVP.setBackgroundColor(android.R.drawable.btn_default)
                 restartGame2()
+                setPlayer = 2
             }
         }
     }
@@ -369,10 +362,10 @@ class MainActivity : AppCompatActivity() {
         var winner = -1
 
         //row1
-        if (Player1.contains(1) && Player1.contains(2) && Player1.contains(3)) {
+        if (Player1.contains(10) && Player1.contains(2) && Player1.contains(3)) {
             winner = 1
         }
-        if (Player2.contains(1) && Player2.contains(2) && Player2.contains(3)) {
+        if (Player2.contains(10) && Player2.contains(2) && Player2.contains(3)) {
             winner = 2
         }
 
@@ -393,10 +386,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         //col1
-        if (Player1.contains(1) && Player1.contains(4) && Player1.contains(7)) {
+        if (Player1.contains(10) && Player1.contains(4) && Player1.contains(7)) {
             winner = 1
         }
-        if (Player2.contains(1) && Player2.contains(4) && Player2.contains(7)) {
+        if (Player2.contains(10) && Player2.contains(4) && Player2.contains(7)) {
             winner = 2
         }
 
@@ -417,10 +410,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         //cross1
-        if (Player1.contains(1) && Player1.contains(5) && Player1.contains(9)) {
+        if (Player1.contains(10) && Player1.contains(5) && Player1.contains(9)) {
             winner = 1
         }
-        if (Player2.contains(1) && Player2.contains(5) && Player2.contains(9)) {
+        if (Player2.contains(10) && Player2.contains(5) && Player2.contains(9)) {
             winner = 2
         }
 
@@ -470,7 +463,7 @@ class MainActivity : AppCompatActivity() {
 
         val buSelect: Button?
         when (cellId) {
-            1 -> buSelect = button1
+            10 -> buSelect = button1
             2 -> buSelect = button2
             3 -> buSelect = button3
             4 -> buSelect = button4
@@ -492,7 +485,7 @@ class MainActivity : AppCompatActivity() {
 
     fun AutoPlay() {
         val emptyCells = ArrayList<Int>()
-        for (cellId in 1..9) {
+        for (cellId in 2..10) {
             if (Player1.contains(cellId) || Player2.contains(cellId)) {
             } else {
                 emptyCells.add(cellId)
@@ -505,7 +498,7 @@ class MainActivity : AppCompatActivity() {
 
         val buSelect: Button?
         when (cellId) {
-            1 -> buSelect = button1
+            10 -> buSelect = button1
             2 -> buSelect = button2
             3 -> buSelect = button3
             4 -> buSelect = button4
@@ -530,7 +523,7 @@ class MainActivity : AppCompatActivity() {
         PVC.isEnabled = false
         PVP.isEnabled = false
         PlayerOnline(splitString(myEmail!!) + splitString(userEmail))
-        restartGame2()
+
 
 
     }
@@ -546,7 +539,7 @@ class MainActivity : AppCompatActivity() {
         PVP.isEnabled = false
         checksend = 1
         PlayerOnline(splitString(userEmail) + splitString(myEmail!!))
-        restartGame2()
+
 
     }
 
@@ -583,10 +576,7 @@ class MainActivity : AppCompatActivity() {
                                 ActivePlayer = if (PlayerSymbol == "X") 2 else 1
                             }
                             var keyint = key.toInt()
-                            if(keyint == 10)
-                            {
-                                keyint = 1
-                            }
+
                             AutoPlayOnline(keyint)
                         }
                     }
