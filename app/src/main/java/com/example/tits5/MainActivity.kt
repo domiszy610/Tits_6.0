@@ -172,6 +172,51 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun restartGame3() {
+        button1.setBackgroundResource(android.R.drawable.btn_default)
+        button2.setBackgroundResource(android.R.drawable.btn_default)
+        button3.setBackgroundResource(android.R.drawable.btn_default)
+        button4.setBackgroundResource(android.R.drawable.btn_default)
+        button5.setBackgroundResource(android.R.drawable.btn_default)
+        button6.setBackgroundResource(android.R.drawable.btn_default)
+        button7.setBackgroundResource(android.R.drawable.btn_default)
+        button8.setBackgroundResource(android.R.drawable.btn_default)
+        button9.setBackgroundResource(android.R.drawable.btn_default)
+
+        button1.text = ""
+        button2.text = ""
+        button3.text = ""
+        button4.text = ""
+        button5.text = ""
+        button6.text = ""
+        button7.text = ""
+        button8.text = ""
+        button9.text = ""
+
+        Player1.clear()
+        Player2.clear()
+//        ActivePlayer = 1
+
+        button1.isEnabled = true
+        button2.isEnabled = true
+        button3.isEnabled = true
+        button4.isEnabled = true
+        button5.isEnabled = true
+        button6.isEnabled = true
+        button7.isEnabled = true
+        button8.isEnabled = true
+        button9.isEnabled = true
+
+
+
+//        PVC.isEnabled = true
+//        PVP.isEnabled = true
+
+
+//        checksend = 0
+
+    }
+
 
 
     fun buttonClick(view: View) {
@@ -514,6 +559,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun buRequestEvent(view: View) {
+        restartGame3()
         var userEmail = etEmail.text.toString()
         myRef.child("Users").child(splitString(userEmail)).child("Request").push().setValue(myEmail)
         PlayerSymbol = "X"
@@ -529,6 +575,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun buAcceptEvent(view: View) {
+        restartGame3()
         var userEmail = etEmail.text.toString()
         myRef.child("Users").child(splitString(userEmail)).child("Request").push().setValue(myEmail)
         PlayerSymbol = "O"
