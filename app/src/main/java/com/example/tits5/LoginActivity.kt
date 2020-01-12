@@ -29,56 +29,79 @@ class LoginActivity : AppCompatActivity() {
 
     fun buLoginEvent(view:View)
     {
-        LoginToFirebase(etEmail.text.toString(),etPassword.text.toString())
+        try {
+            LoginToFirebase(etEmail.text.toString(), etPassword.text.toString())
+        }
+        catch(e: Exception)
+        {
+            Toast.makeText(
+                applicationContext,
+                "Nie można zalogować! Sprawdź dane!",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     fun LoginToFirebase(email:String,password:String) {
-        mAuth!!.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    var currentUser = mAuth!!.currentUser
-                    Toast.makeText(applicationContext, "Zalogowano pomyślnie", Toast.LENGTH_SHORT)
-                        .show()
+        try {
+            mAuth!!.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        var currentUser = mAuth!!.currentUser
+                        Toast.makeText(
+                            applicationContext,
+                            "Zalogowano pomyślnie",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
 
-                    if (currentUser != null) {
+                        if (currentUser != null) {
 
-                        myRef.child("Users")
-                            .child(splitString(currentUser.email.toString()))
-                            .child("Request").setValue(currentUser.uid)
+                            myRef.child("Users")
+                                .child(splitString(currentUser.email.toString()))
+                                .child("Request").setValue(currentUser.uid)
+                        }
+
+
+                        LoadMain()
+                    } else {
+
+                        mAuth!!.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(this) { task ->
+                                if (task.isSuccessful) {
+                                    var currentUser = mAuth!!.currentUser
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "Zalogowano pomyślnie",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    if (currentUser != null) {
+
+                                        myRef.child("Users")
+                                            .child(splitString(currentUser.email.toString()))
+                                            .child("Request").setValue(currentUser.uid)
+                                        mAuth!!.signInWithEmailAndPassword(email, password)
+                                    }
+                                    LoadMain()
+                                } else {
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "Nie można zalogować! Sprawdź dane!",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
                     }
 
-
-                    LoadMain()
-                } else {
-
-                    mAuth!!.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(this) { task ->
-                            if (task.isSuccessful) {
-                                var currentUser = mAuth!!.currentUser
-                                Toast.makeText(
-                                    applicationContext,
-                                    "Zalogowano pomyślnie",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                if (currentUser != null) {
-
-                                    myRef.child("Users")
-                                        .child(splitString(currentUser.email.toString()))
-                                        .child("Request").setValue(currentUser.uid)
-                                    mAuth!!.signInWithEmailAndPassword(email, password)
-                                }
-                                LoadMain()
-                            } else {
-                                Toast.makeText(
-                                    applicationContext,
-                                    "Nie można zalogować! Sprawdź dane!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
                 }
-
-            }
+        }
+        catch (e:Exception){
+            Toast.makeText(
+                applicationContext,
+                "Nie można zalogować! Sprawdź dane!",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun onStart() {
