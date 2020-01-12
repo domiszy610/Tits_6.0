@@ -508,7 +508,7 @@ class MainActivity : AppCompatActivity() {
 
         val buSelect: Button?
         when (cellId) {
-            10 -> buSelect = button1
+
             2 -> buSelect = button2
             3 -> buSelect = button3
             4 -> buSelect = button4
@@ -517,6 +517,7 @@ class MainActivity : AppCompatActivity() {
             7 -> buSelect = button7
             8 -> buSelect = button8
             9 -> buSelect = button9
+            10 -> buSelect = button1
             else -> buSelect = null
         }
 
@@ -543,7 +544,7 @@ class MainActivity : AppCompatActivity() {
 
         val buSelect: Button?
         when (cellId) {
-            10 -> buSelect = button1
+
             2 -> buSelect = button2
             3 -> buSelect = button3
             4 -> buSelect = button4
@@ -552,6 +553,7 @@ class MainActivity : AppCompatActivity() {
             7 -> buSelect = button7
             8 -> buSelect = button8
             9 -> buSelect = button9
+            10 -> buSelect = button1
             else -> buSelect = button1
         }
 
